@@ -1,0 +1,66 @@
+/**
+    Global
+*/
+.d-table {
+    display: table;
+}
+
+.d-table .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+
+/**
+    POS-VIEW
+*/
+.pos-view-scroller {
+    overflow-y: scroll;
+}
+
+.pos-content .card.menu,
+.pos-content .card.item {
+    cursor: pointer;
+}
+
+.pos-content .card.menu:hover {
+    border-color: #4e73df;
+}
+
+.pos-content .card.item:hover {
+    border: 1px solid #4e73df;
+    overflow: hidden;
+}
+
+#pos-navigation .add-customer button {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 10px;
+    color: #4e73df;
+    font-size: 12px;
+}
+
+#pos-navigation .add-customer button:hover {
+    color: #000;
+    border-color: #4e73df;
+}
+
+.purchase-items {
+    overflow-y: scroll;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.purchase-items .ui .item:hover {
+    background-color: rgb(231, 231, 231);
+    padding-left: 5px;
+    cursor: pointer;
+}
+
+.checkout-menu ul li {
+    background: none;
+}
