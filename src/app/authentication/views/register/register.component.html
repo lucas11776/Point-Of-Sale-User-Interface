@@ -1,0 +1,80 @@
+<div class="row justify-content-center w-100">
+    <div class="col-xl-5 col-lg-6 col-md-7 pb-md-1 pb-lg-3 pb-xl-5">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h5 text-gray-900 mb-4">
+                                    <i class="user plus icon"></i> Create an Account!
+                                </h1>
+                            </div>
+                            <form class="user" [formGroup]="form">
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="text"
+                                               class="form-control form-control-user"
+                                               id="first_name"
+                                               placeholder="Name"
+                                               formControlName="first_name"
+                                               [ngClass]="{'is-invalid': invalid('first_name')}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text"
+                                               class="form-control form-control-user"
+                                               id="last_name"
+                                               placeholder="Surname"
+                                               formControlName="last_name"
+                                               [ngClass]="{'is-invalid': invalid('last_name')}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email"
+                                           class="form-control form-control-user"
+                                           id="email"
+                                           placeholder="Email"
+                                           formControlName="email"
+                                           [ngClass]="{'is-invalid': invalid('email')}">
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input type="password"
+                                               class="form-control form-control-user"
+                                               id="password"
+                                               placeholder="Password"
+                                               formControlName="password"
+                                               [ngClass]="{'is-invalid': invalid('password')}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password"
+                                               class="form-control form-control-user"
+                                               id="password_confirmation"
+                                               placeholder="Repeat Password"
+                                               formControlName="password_confirmation"
+                                               [ngClass]="{'is-invalid': invalid('password_confirmation')}">
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary btn-user btn-block"
+                                        (click)="register()"
+                                        [disabled]="invalid()"> Register Account
+                                </button>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a [routerLink]="['/', 'authentication', 'fogort', 'password']"
+                                   class="small"> Forgot Password?
+                                </a>
+                            </div>
+                            <div class="text-center">
+                                <a [routerLink]="['/', 'authentication', 'login']"
+                                   class="small"> Already have an account? Login!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
