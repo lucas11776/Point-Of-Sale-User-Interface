@@ -39,10 +39,9 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <button href="index.html"
-                                                        id="login"
+                                                <button id="login"
                                                         class="btn btn-primary btn-user btn-block"
-                                                        (click)="login()">
+                                                        [disabled]="invalid()">
                                                     <i class="sign-in icon"></i> Login
                                                 </button>
                                             </form>

@@ -3,6 +3,7 @@ import { Form as FormInterface, AbstractControlKey } from '../model/form';
 
 export class Form implements FormInterface{
     form: FormGroup;
+    
     private _data: any;
 
     constructor(data?: any[]) {
@@ -39,7 +40,7 @@ export class Form implements FormInterface{
 
     data(key: string): any {
         if(! this._data || ! this._data[key]) {
-            return '';
+            return null;
         }
         return this._data[key];
     }

@@ -11,6 +11,4 @@ export class RegisterComponent extends RegisterForm {
   constructor() {
     super();
   }
-  
-  register() { }
 }
