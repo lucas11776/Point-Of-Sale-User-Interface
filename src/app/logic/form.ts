@@ -1,5 +1,5 @@
 import { FormGroup, AbstractControl, FormBuilder } from '@angular/forms';
-import { Form as FormInterface, AbstractControlKey } from '../model/form';
+import { Form as FormInterface, AbstractControlKey } from '../models/form';
 
 export class Form implements FormInterface{
     form: FormGroup;
@@ -21,12 +21,12 @@ export class Form implements FormInterface{
     }
 
     control(key: string): AbstractControl {
-        return this.controls()[key];
+        return this.form.controls[key];
     }
     
     invalid(key?: string): boolean {
         if(key) {
-            return this.control(key).invalid && this.control(key).dirty;
+            return this.form.controls[key].invalid && this.form.controls[key].dirty;
         }
         return this.form.invalid;
     }
@@ -43,6 +43,10 @@ export class Form implements FormInterface{
             return null;
         }
         return this._data[key];
+    }
+
+    errors(key: string): object|null {
+        return this.form.controls[key].errors;
     }
     
     reset(): void {

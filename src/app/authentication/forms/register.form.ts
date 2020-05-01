@@ -8,7 +8,7 @@ export class RegisterForm extends Form {
         return {
             'first_name': [this.data('first_name'), [
               Validators.required,
-              Validators.minLength(2),
+              Validators.minLength(3),
               Validators.maxLength(50),
             ]],
             'last_name': [this.data('last_name'), [
@@ -18,7 +18,7 @@ export class RegisterForm extends Form {
             ]],
             'email': [this.data('email'), [
               Validators.required,
-              RxwebValidators.email,
+              RxwebValidators.email(),
             ]],
             'password': [this.data('password'), [
               Validators.required,
@@ -26,8 +26,7 @@ export class RegisterForm extends Form {
               Validators.maxLength(20),
             ]],
             'password_confirmation': [this.data('password_confirmation'), [
-              Validators.required,
-              RxwebValidators.compare({fieldName:'password' }),
+              RxwebValidators.compare({fieldName:'password'}),
             ]]
         }
     }

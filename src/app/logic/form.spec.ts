@@ -1,25 +1,20 @@
 import { Validators } from '@angular/forms';
 
 import { Form } from './form';
-import { RegisterForm } from '../authentication/forms/register.form';
-import { format } from 'util';
 
-describe('Form class extender.', () => {
+describe('Form.', () => {
     let _form: Form;
     const data = {'name': 'Test', 'email': 'test@mail.com'};
 
     beforeEach(() => {
         _form = new class RegisterForm extends Form {
-            constructor() {
-                super();
-            }
             protected rules(): object {
                 return {
                     'name': [this.data('name'), [Validators.required]],
                     'email': [this.data('email'), [Validators.required, Validators.email]],
                 }
             }
-        }
+        };
     });
 
     it('Should check if form created', () => {
@@ -49,8 +44,16 @@ describe('Form class extender.', () => {
         expect(_form.form.value).toEqual(data);
     });
 
+    it('Should get form controls.', () => {
+        expect(_form.controls()).toEqual(_form.form.controls);
+    });
+
     it('Should get form email control.', () => {
         expect(_form.control('email')).toEqual(_form.form.controls.email);
+    });
+
+    it('Should get first name form control errors.', () => {
+        expect(_form.errors('name')).toEqual(_form.form.controls.name.errors);
     });
 
     it('Should rest form to origal state.', () => {

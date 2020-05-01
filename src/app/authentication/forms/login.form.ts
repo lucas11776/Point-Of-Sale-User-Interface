@@ -9,7 +9,7 @@ export class LoginForm extends Form {
             'email': [this.data('email'), [
               Validators.required,
               Validators.email,
-              RxwebValidators.email,
+              RxwebValidators.email(),
             ]],
             'password': [this.data('password'), [
               Validators.required,
