@@ -2,7 +2,7 @@ import { Validators } from '@angular/forms';
 
 import { Form } from './form';
 
-describe('Form.', () => {
+describe('Form', () => {
     let _form: Form;
     const data = {'name': 'Test', 'email': 'test@mail.com'};
 

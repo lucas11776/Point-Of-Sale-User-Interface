@@ -2,7 +2,7 @@ import { RegisterForm } from "./register.form";
 import { Form } from "../../logic/form";
 import { RegisterMock } from '../mocks/register.mock';
 
-describe('Register Form Validation Rules', () => {
+describe('RegisterForm', () => {
     let _form: Form;
     let data: object;
 

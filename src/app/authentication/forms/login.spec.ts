@@ -2,7 +2,7 @@ import { LoginForm } from "./login.form";
 import { Form } from "../../logic/form";
 import { LoginMock } from '../mocks/login.mock';
 
-describe('Login Form', () => {
+describe('LoginForm', () => {
     let _form: Form;
     let credentials: object;
 

@@ -17,13 +17,30 @@
                                            class="form-control form-control-user"
                                            id="email"
                                            aria-describedby="email address"
-                                           placeholder="Enter email address.">
+                                           placeholder="Enter email address."
+                                           [ngClass]="{'is-invalid': invalid('email')}"
+                                           formControlName="email">
+                                    <div class="invalid-feedback">
+                                        <span *ngIf="errors('email')?.required">
+                                            The email is required to login.
+                                        </span>
+                                        <span *ngIf="errors('email')?.email">
+                                            The email is invalid.
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <input type="password"
                                            class="form-control form-control-user"
                                            id="password"
-                                           placeholder="Enter password.">
+                                           placeholder="Enter password."
+                                           [ngClass]="{'is-invalid': invalid('password')}"
+                                           formControlName="password">
+                                    <div class="invalid-feedback">
+                                        <span *ngIf="errors('password')">
+                                            <i class="key icon"></i> The login credentials are invalid.
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox small">

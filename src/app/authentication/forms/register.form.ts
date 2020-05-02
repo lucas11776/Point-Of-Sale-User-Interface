@@ -26,6 +26,7 @@ export class RegisterForm extends Form {
               Validators.maxLength(20),
             ]],
             'password_confirmation': [this.data('password_confirmation'), [
+              Validators.required,
               RxwebValidators.compare({fieldName:'password'}),
             ]]
         }
