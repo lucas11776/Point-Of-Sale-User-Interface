@@ -7,11 +7,13 @@ import { GlobalModule } from '../global/global.module';
 import { StoreComponent } from './store.component';
 
 @NgModule({
-  declarations: [StoreComponent],
+  declarations: [
+    StoreComponent
+  ],
   imports: [
     CommonModule,
-    StoreRoutingModule,
     RouterModule,
+    StoreRoutingModule,
     GlobalModule,
   ]
 })

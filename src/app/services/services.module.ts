@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { GlobalModule } from '../global/global.module';
 import { ServicesRoutingModule } from './services-routing.module';
-import { ServicesComponent } from './services.component';
-
 
 @NgModule({
-  declarations: [ServicesComponent],
+  declarations: [],
   imports: [
     CommonModule,
-    ServicesRoutingModule
+    ServicesRoutingModule,
+    GlobalModule,
   ]
 })
 export class ServicesModule { }

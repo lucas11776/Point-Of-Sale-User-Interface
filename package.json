@@ -21,6 +21,7 @@
     "@angular/router": "~8.2.4",
     "@ng-bootstrap/ng-bootstrap": "^6.0.0",
     "@rxweb/reactive-form-validators": "^1.9.9-beta2",
+    "jquery": "^3.5.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

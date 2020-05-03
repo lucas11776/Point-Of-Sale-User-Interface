@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { GlobalModule } from '../global/global.module';
 import { PointOfSaleRoutingModule } from './point-of-sale-routing.module';
 import { PointOfSaleComponent } from './point-of-sale.component';
 
@@ -9,7 +10,8 @@ import { PointOfSaleComponent } from './point-of-sale.component';
   declarations: [PointOfSaleComponent],
   imports: [
     CommonModule,
-    PointOfSaleRoutingModule
+    GlobalModule,
+    PointOfSaleRoutingModule,
   ]
 })
 export class PointOfSaleModule { }

@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { GlobalModule } from '../global/global.module';
 import { ProductsRoutingModule } from './products-routing.module';
-import { ProductsComponent } from './products.component';
-
 
 @NgModule({
-  declarations: [ProductsComponent],
+  declarations: [],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    GlobalModule
   ]
 })
 export class ProductsModule { }

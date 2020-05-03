@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { CoverPageComponent } from './cover-page.component';
+import { LogoutComponent } from '../../authentication/components/logout/logout.component';
 
 describe('CoverPageComponent', () => {
   let component: CoverPageComponent;
@@ -9,7 +10,7 @@ describe('CoverPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CoverPageComponent],
+      declarations: [CoverPageComponent,LogoutComponent],
       imports: [RouterTestingModule]
     })
     .compileComponents();
@@ -24,6 +25,4 @@ describe('CoverPageComponent', () => {
   it('should create cover page component.', () => {
     expect(component).toBeTruthy();
   });
-
-  
 });
