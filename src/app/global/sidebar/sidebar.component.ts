@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import $ from 'jquery';
 
 @Component({
@@ -17,5 +17,7 @@ export class SidebarComponent implements OnInit {
   toggleSidebar() {
     $('body').toggleClass('sidebar-toggled');
     $(".sidebar").toggleClass("toggled");
+    if ($(".sidebar").hasClass("toggled"))
+      $('.sidebar .collapse').addClass('hide');
   }
 }

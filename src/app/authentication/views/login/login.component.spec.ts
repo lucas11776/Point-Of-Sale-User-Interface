@@ -1,21 +1,32 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing'
-import { RxReactiveFormsModule, } from '@rxweb/reactive-form-validators';
 import { DebugElement } from '@angular/core';
+import { async, ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing'
+import { of } from 'rxjs';
+import { RxReactiveFormsModule, } from '@rxweb/reactive-form-validators';
 
 import { LoginComponent } from './login.component';
+import { AuthenticationService } from '../../shared/authentication.service';
+import { LoginMock } from '../../mocks/login.mock';
+import { TokenMock } from '../../mocks/token.mock';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let element: DebugElement;
+  let _auth: AuthenticationService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent],
-      imports: [RouterTestingModule, RxReactiveFormsModule]
-    })
-    .compileComponents();
+      declarations: [
+        LoginComponent,
+      ],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        RxReactiveFormsModule,
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,11 +34,21 @@ describe('LoginComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     element = fixture.debugElement;
+    _auth = TestBed.get(AuthenticationService);
   });
 
   it('should create login component.', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should login user and redirect user to home page.', fakeAsync(() => {
+    spyOn(_auth, 'login').and.callFake(() => of(new TokenMock));
+    component.set(new LoginMock());
+    fixture.detectChanges();
+    component.login();
+    tick();
+    expect(component.error).toEqual(new TokenMock);
+  }));
 
   it('should display invalid email error message if email is invalid.', () => {
     component.control('email').setValue('thembangubeni#gmail.com');
