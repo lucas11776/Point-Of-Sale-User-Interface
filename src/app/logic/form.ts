@@ -1,5 +1,5 @@
 import { FormGroup, AbstractControl, FormBuilder } from '@angular/forms';
-import { Form as FormInterface, AbstractControlKey } from '../models/form';
+import { Form as FormInterface, AbstractControlKey } from '../models/form.interface';
 
 export class Form implements FormInterface{
     form: FormGroup;

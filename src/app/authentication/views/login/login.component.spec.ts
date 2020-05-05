@@ -42,12 +42,12 @@ describe('LoginComponent', () => {
   });
 
   it('should login user and redirect user to home page.', fakeAsync(() => {
-    spyOn(_auth, 'login').and.callFake(() => of(new TokenMock));
+    spyOn(_auth, 'login').and.callFake(() => of(TokenMock));
     component.set(new LoginMock());
     fixture.detectChanges();
     component.login();
     tick();
-    expect(component.error).toEqual(new TokenMock);
+    expect(component.error).toEqual(TokenMock);
   }));
 
   it('should display invalid email error message if email is invalid.', () => {

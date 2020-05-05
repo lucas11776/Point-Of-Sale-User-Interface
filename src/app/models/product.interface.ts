@@ -1,6 +1,6 @@
-import { Image } from './image';
-import { Category } from './category';
-import { SubCategory } from './sub.category';
+import { Image } from './image.interface';
+import { Category } from './category.interface';
+import { SubCategory } from './sub.category.interface';
 
 export interface Product {
     id: number;

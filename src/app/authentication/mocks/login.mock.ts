@@ -1,4 +1,4 @@
-import { Login } from 'src/app/models/authentication';
+import { Login } from 'src/app/models/authentication.interface';
 
 export class LoginMock {
     constructor() {

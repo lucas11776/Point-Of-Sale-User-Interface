@@ -1,6 +1,6 @@
 class ProductsMock {
     constructor() {
-        return {
+        return <any>{
             "current_page": 1,
             "data": [
                 {
