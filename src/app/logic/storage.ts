@@ -8,10 +8,8 @@ export class Storage {
     ];
 
     constructor() {
-        this.adaptors.forEach((adaptor) => {
-            if(! this.exists() || ! adaptor.exists()) {
-                this.db = adaptor;
-            }
+        this.adaptors.forEach((adaptor: StorageAdaptor) => {
+            if(this.adaptorExist(adaptor)) this.db = adaptor;
         });
     }
     
@@ -45,5 +43,9 @@ export class Storage {
     
     clear(table?: string): void {
         this.db.clear(table);
+    }
+
+    private adaptorExist(adaptor: StorageAdaptor): boolean {
+        return ! this.exists() || ! adaptor.exists()
     }
 }
