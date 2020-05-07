@@ -25,6 +25,14 @@ export class Request implements OnDestroy {
         this.error = error;
     }
 
+    protected openLoader() {
+        
+    }
+
+    protected closeLoader() {
+
+    }
+
     private resolve(observable: Observable<any>): Subscription {
         return observable.subscribe(
             (data: any) => this.success(data),

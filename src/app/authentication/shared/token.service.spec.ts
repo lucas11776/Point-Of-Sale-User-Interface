@@ -32,6 +32,6 @@ describe('TokenService', () => {
   it('should unset token from storage.', () => {
     _token.set(TokenMock());
     _token.unset();
-    expect(_token.get()).toBe('');
+    expect(_token.get()).toBeNull();
   });
 });

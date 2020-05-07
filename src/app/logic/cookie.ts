@@ -1,11 +1,16 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+})
 export class Cookie {
-    all(): object {
+    all(): {} {
         return this.cookies();
     }
 
     get(key: string): string {
-        let cookie = this.cookiesArray().find((cookie) => cookie[0] == key)
-        return cookie && cookie[1] ? cookie[1] : '';
+        let cookie = this.getCookies().find((cookie) => cookie[0] == key)
+        return cookie && cookie[1] ? cookie[1] : null;
     }
 
     set(key: string, value: string, date: Date, path: string = '/'): void {
@@ -19,20 +24,19 @@ export class Cookie {
         document.cookie = uncookie;
     }
 
-    protected cookies(): object {
-        let object: object = {};
-        this.cookiesArray().forEach((cookie) => object[cookie[0]] = cookie[1]);
+    protected cookies(): {} {
+        let object: {} = null;
+        this.getCookies().forEach((cookie) => {
+            if(object == null) object = {};
+            object[cookie[0]] = cookie[1]
+        });
         return object;
     }
-
-    protected cookiesArray(): any[] {
-        return this.cleanCookies(document.cookie.split(';'));
-    }
-
-    private cleanCookies(cookies: any[]): any[] {
-        return cookies.map((cookie) => {
-            let keyValue = cookie.split('=');
-            return [keyValue[0].trim(), keyValue[1] ? keyValue[1].trim() : '']
-        });
+    
+    private getCookies(): any[] {
+        return document.cookie.split(';')
+            .map((cookie) => cookie.split('='))
+            .map((cookie: any[]) => [cookie[0].trim(), cookie[1] ? cookie[1].trim() : ''])
+            .filter((cookie: any[]) => cookie[0] == '' ? false : true)
     }
 }
