@@ -9,7 +9,7 @@ describe('Cookie', () => {
 
     beforeEach(() => {
         _cookie = new Cookie;
-        token = TokenMock;
+        token = TokenMock();
         date = new Date();
         date.setTime(date.getTime() + (1000 * token.expire));
     })

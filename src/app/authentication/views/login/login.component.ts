@@ -19,11 +19,11 @@ export class LoginComponent extends LoginForm implements OnDestroy {
 
   login() {
     this.ngOnDestroy();
-    this.subscription = this._auth.login(this.form.value)
-      .subscribe(
-        (res) => this.error = res,
-        (err) => this.error = err,
-      );
+    // this.subscription = this._auth.login(this.form.value)
+    //   .subscribe(
+    //     (res) => this.error = res,
+    //     (err) => this.error = err,
+    //   );
   }
 
   ngOnDestroy() {

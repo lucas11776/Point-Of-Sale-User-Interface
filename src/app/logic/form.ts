@@ -3,7 +3,6 @@ import { Form as FormInterface, AbstractControlKey } from '../models/form.interf
 
 export class Form implements FormInterface{
     form: FormGroup;
-    
     private _data: any;
 
     constructor(data?: any[]) {
@@ -11,7 +10,7 @@ export class Form implements FormInterface{
     }
 
     set(data?: object): FormGroup {
-        this._data = data;
+        this._data = data ? data : {};
         this.setForm(this.rules());
         return this.form;
     }
@@ -25,32 +24,27 @@ export class Form implements FormInterface{
     }
     
     invalid(key?: string): boolean {
-        if(key) {
-            return this.form.controls[key].invalid && this.form.controls[key].dirty;
-        }
-        return this.form.invalid;
+        return key ? this.controlValid(key) : this.form.invalid
     }
     
     valid(key?: string): boolean {
-        if(key) {
-            return this.control(key).valid;
-        }
-        return this.form.valid;
+        return key ? this.control(key).valid : this.form.valid
     }
 
     data(key: string): any {
-        if(! this._data || ! this._data[key]) {
-            return null;
-        }
-        return this._data[key];
+        return ! this._data || ! this._data[key] ? null : this._data[key];
     }
 
     errors(key: string): object|null {
         return this.form.controls[key].errors;
     }
-    
+
     reset(): void {
-        this.set(this._data);
+        this.form.reset();
+    }
+
+    protected controlValid(key): boolean {
+        return this.form.controls[key].invalid && this.form.controls[key].dirty;
     }
 
     protected rules(): object {

@@ -1,10 +1,9 @@
-import { Login } from 'src/app/models/authentication.interface';
+import { Login } from '../models/login.model';
 
-export class LoginMock {
-    constructor() {
-        return <Login> {
-            'email': 'thembangubeni04@gmail.com',
-            'password': 'password'
-        };
-    }
-}
+
+export let LoginMock = (): Login => {
+    return {
+        'email': 'thembangubeni04@gmail.com',
+        'password': 'password'
+    };
+};

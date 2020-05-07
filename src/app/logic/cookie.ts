@@ -21,9 +21,7 @@ export class Cookie {
 
     protected cookies(): object {
         let object: object = {};
-        this.cookiesArray().forEach((cookie) => {
-            object[cookie[0]] = cookie[1];
-        });
+        this.cookiesArray().forEach((cookie) => object[cookie[0]] = cookie[1]);
         return object;
     }
 

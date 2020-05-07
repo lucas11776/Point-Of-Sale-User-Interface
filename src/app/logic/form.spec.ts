@@ -56,11 +56,9 @@ describe('Form', () => {
         expect(_form.errors('name')).toEqual(_form.form.controls.name.errors);
     });
 
-    it('Should rest form to origal state.', () => {
+    it('Should rest form.', () => {
         _form.set(data);
-        _form.control('name').setValue('developer');
-        expect(_form.form.value.name).not.toEqual(data.name);
         _form.reset();
-        expect(_form.form.value.name).toEqual(data.name);
+        expect(_form.form.value).toEqual({name: null,email: null});
     });
 });

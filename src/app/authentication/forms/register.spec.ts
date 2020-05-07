@@ -1,14 +1,15 @@
 import { RegisterForm } from "./register.form";
 import { Form } from "../../logic/form";
 import { RegisterMock } from '../mocks/register.mock';
+import { Register } from '../../models/authentication.interface';
 
 describe('RegisterForm', () => {
     let _form: Form;
-    let data: object;
+    let data: Register;
 
     beforeEach(() => {
         _form = new RegisterForm();
-        data = new RegisterMock();
+        data = RegisterMock();
     });
 
     it('Should check if register form is invalid is data is not filled.', () => {

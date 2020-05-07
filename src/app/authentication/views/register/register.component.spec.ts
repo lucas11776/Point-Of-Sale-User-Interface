@@ -31,7 +31,7 @@ describe('RegisterComponent', () => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    component.set(new RegisterMock())
+    component.set(RegisterMock())
     element = fixture.debugElement;
   });
 
