@@ -17,7 +17,7 @@ export class AuthenticationService {
     return this.api.post('authentication/register', form);
   }
 
-  login(credentials): Observable<Token> {
+  login(credentials: Login): Observable<Token> {
     return this.api.post('authentication/login', credentials);
   }
 }

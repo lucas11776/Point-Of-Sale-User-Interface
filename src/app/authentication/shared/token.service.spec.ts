@@ -26,7 +26,7 @@ describe('TokenService', () => {
 
   it('should store application token in storage.', () => {
     _token.set(TokenMock());
-    expect(_token.get()).toBe(TokenMock().token);
+    expect(_token.get()).toBe(`Bearer ${TokenMock().token}`);
   });
   
   it('should unset token from storage.', () => {

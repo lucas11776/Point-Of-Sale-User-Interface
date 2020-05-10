@@ -11,17 +11,17 @@ export class TokenService {
   constructor(private _cookie: Cookie) { }
 
   get(): string {
-    return this._cookie.get('authorization');
+    return this._cookie.get('Authorization');
   }
 
   set(_token: Token) {
     let token = _token.token;
     let date = this.secondsToNextDate(_token.expire);
-    this._cookie.set('authorization', token, date); 
+    this._cookie.set('Authorization', `Bearer ${token}`, date); 
   }
 
   unset() {
-    this._cookie.unset('authorization');
+    this._cookie.unset('Authorization');
   }
 
   protected secondsToNextDate(seconds: number): Date {

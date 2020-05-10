@@ -1,34 +1,48 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { Subscription, Observable } from 'rxjs';
 
 import { LoginForm } from '../../forms/login.form';
 import { AuthenticationService } from '../../shared/authentication.service';
+import { TokenService } from '../../shared/token.service';
+import { Token } from '../../models/token.model';
+import { Request } from '../../../logic/request';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'pos-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent extends LoginForm implements OnDestroy {
-  error: any;
+export class LoginComponent extends LoginForm {
   subscription: Subscription;
 
-  constructor(private _auth: AuthenticationService) {
+  constructor(
+    private _auth: AuthenticationService,
+    private _token: TokenService,
+    private _router: Router,
+    private _request: Request) {
     super();
   }
 
-  login() {
-    this.ngOnDestroy();
-    alert('Lgoin');
-    this.subscription = this._auth.login(this.form.value)
-      .subscribe(
-        (res) => console.log(this.error = res),
-        (err) => console.log(this.error = err),
-      );
+  get error(): any {
+    return this._request.error;
   }
 
-  ngOnDestroy() {
-    if(this.error) this.error = null;
-    if(this.subscription) this.subscription.unsubscribe();
-  }  
+  login(): void {
+    this._request.request(
+      this.loginRequest()
+    );
+  }
+
+  protected success(token: Token): void {
+    this._token.set(token);
+    this._router.navigate(['/']);
+  }
+
+  private loginRequest(): Observable<void> {
+    return this._auth.login(this.form.value).pipe(
+      map(token => this.success(token))
+    )
+  }
 }

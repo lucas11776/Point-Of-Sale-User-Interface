@@ -1,17 +1,23 @@
 import { DebugElement } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 import { RxReactiveFormsModule, } from '@rxweb/reactive-form-validators';
 
 import { RegisterComponent } from './register.component';
 import { RegisterMock } from '../../mocks/register.mock';
+import { AuthenticationService } from '../../shared/authentication.service';
+import { TokenService } from '../../shared/token.service';
+import { TokenMock } from '../../mocks/token.mock';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
   let element: DebugElement;
+  let _auth: AuthenticationService;
+  let _token: TokenService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,12 +25,14 @@ describe('RegisterComponent', () => {
         RegisterComponent,
       ],
       imports: [
-        HttpClientTestingModule,
         RouterTestingModule,
+        HttpClientTestingModule,
         RxReactiveFormsModule,
+      ],
+      providers: [
+        TokenService
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -33,7 +41,17 @@ describe('RegisterComponent', () => {
     fixture.detectChanges();
     component.set(RegisterMock())
     element = fixture.debugElement;
+    _auth = TestBed.get(AuthenticationService);
+    _token = TestBed.get(TokenService);
   });
+
+  it('should register new user account and store token.', fakeAsync(() => {
+    spyOn(_auth, 'register').and.callFake(() => of(TokenMock()));
+    component.set(RegisterMock());
+    fixture.detectChanges();
+    component.register();
+    expect(_token.get()).toBe(`Bearer ${TokenMock().token}`);
+  }));
 
   it('should create register component.', () => {
     expect(component).toBeTruthy();
